@@ -24,6 +24,9 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+//Añado esta linea
+import 'react-native-gesture-handler';
+
 class App extends React.Component{
   render(){
     return (
