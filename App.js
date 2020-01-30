@@ -26,11 +26,25 @@ import {
 
 //Añado esta linea
 import 'react-native-gesture-handler';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
 
+export const NavegadorDeLaApp = createStackNavigator(
+  {
+    Login:{screen:Login},
+    Register:{screen:Register},
+    Inicio:{screen:Inicio},
+    Afegir:{screen:Afegir},
+    Modificar:{screen:Modificar},
+  },
+  {initialRouteName:'Login'},
+);
+
+export const AppContainer = createAppContainer(NavegadorDeLaApp);
 class App extends React.Component{
   render(){
     return (
-      <View></View>
+      <AppContainer/>
     );
   }
 };
