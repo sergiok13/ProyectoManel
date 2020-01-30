@@ -75,23 +75,7 @@ class Inicio extends React.Component {
                 <View>
                     <Text>Benvingut</Text>
                     <FlatList
-                        data={{
-                            "usuaris": [
-                              {
-                                "idUsu": 1,
-                                "userName": "mviel",
-                                "contrasenya": "hola",
-                                "nom": "Manel"
-                              },
-                              {
-                                "idUsu": 2,
-                                "userName": "jofrna",
-                                "contrasenya": "hola",
-                                "nom": "Jonh"
-                              }
-                              
-                            ],
-                            "elements": [
+                        data={[
                               {
                                 "id":1,
                                 "nom": "Coca-Cola",
@@ -122,11 +106,10 @@ class Inicio extends React.Component {
                                 "nom": "Pa",
                                 "descripcio": "Del Forn!!!"
                               }
-                            ]
-                          }}
-                          renderItem={({ item }) => <Item nombre={item.elements.nom} descripcion={item.elements.descripcio}/>}
+                            ]}
+                          renderItem={({ item }) => <Item nombre={item.nom} id={item.id} descripcion={item.descripcio}/>}
                     />
-                    <Button title="AÑADIR" />
+                    <Button title="AÑADIR"/>
                 </View>
             );
         }
