@@ -12,20 +12,9 @@ export default class Login extends Component{
     constructor(props){
         super(props)
         this.state={
-            correo: '',
+            userName: '',
             password: '',
             resultadoFetch: []
-        }
-    }
-
-    validar_email = (email) => {
-        var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        if (regex.test(email)) {
-            this.setState({ correo: email });
-            console.log("correo valido")
-        } else {
-            this.setState({ correo: "" })
-            console.log("error");
         }
     }
 
@@ -51,11 +40,11 @@ export default class Login extends Component{
 
             <View>
 
-                <Text>Correo Usuario</Text>
+                <Text>Nombre Usuario</Text>
                 <TextInput
                 style={{ borderWidth: 1 }}
-                placeholder = "Correo"
-                onChangeText = {this.validar_email}
+                placeholder = "Usuario"
+                onChangeText = {this.validar_usuario}
                 keyboardType='email-address'
                 />
 
