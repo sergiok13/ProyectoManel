@@ -20,13 +20,13 @@ import {
 import 'react-native-gesture-handler';
 
 class Item extends React.Component {
-    constructor(porps) {
+    constructor(props) {
         super(props);
     }
     render() {
         return (
             <View>
-                <Text>{this.props.nombre}</Text>
+                <Text>Nombre</Text>
                 <Text>Descripcion</Text>
             </View>
         );
