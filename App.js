@@ -28,16 +28,17 @@ import {
 import 'react-native-gesture-handler';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
+import Inicio from './screens/inicio';
 
 export const NavegadorDeLaApp = createStackNavigator(
   {
-    Login:{screen:Login},
-    Register:{screen:Register},
+    //Login:{screen:Login},
+    //Register:{screen:Register},
     Inicio:{screen:Inicio},
-    Afegir:{screen:Afegir},
-    Modificar:{screen:Modificar},
+    //Afegir:{screen:Afegir},
+    //Modificar:{screen:Modificar},
   },
-  {initialRouteName:'Login'},
+  {initialRouteName:'Inicio'},
 );
 
 export const AppContainer = createAppContainer(NavegadorDeLaApp);
