@@ -13,22 +13,50 @@ export default class Login extends Component{
         super(props)
         this.state={
             userName: '',
-            password: '',
-            resultadoFetch: []
-        }
+            contrasenya: '',
+            documentJSON: [], //se guardan los usuarios de la bbdd recuperados
+            usuarioCorrecto: false
+        };
+         //Esto es necesario para poder usar las funciones.
+         this.comprueboUsuario = this.comprueboUsuario.bind(this);
+         this.usuarioCorrecto = this.usuarioCorrecto.bind(this);
+         this.cambioAInicio =  this.cambioAInicio.bind(this);
     }
 
      guardarPassword = (text) => {
         (text.length > 1)
-            ? this.setState({ password: text })
-            : this.setState({ password: "" })
+            ? this.setState({ contrasenya: text })
+            : this.setState({ contrasenya: "" })
+    }
+
+    guardarUsuario=(text)=>{
+        (text.length > 1)
+            ? this.setState({ userName: user })
+            : this.setState( { userName: "" })
     }
 
     
-
+    //Recupera SOLO los usuarios que coincidan con las variables pasadas por parámetros  
     comprobarUsuario = async () => {
-        await this.iniciarSesion();
-        (this.state.resultadoFetch.length !== 0) ? this.props.navigation.navigate('Inicio') : alert("El correo o la contraseña no son correctos");;
+        fetch(`http://localhost:3000/usuaris?userName=${this.state.userName}&contrasenya=${this.state.contrasenya}`) 
+      .then((respuesta) => {
+        if (respuesta.ok) {
+          return respuesta.json();
+        } else {
+          console.log("Error en la conexion con http://localhost:3000/usuaris/")
+          alert("Error en la conexion con http://localhost:3000/usuaris/")
+        }
+      })
+      .then(respostaJson => {
+        this.setState({ documentJSON: respostaJson })
+      })
+      .catch(error => {
+        console.log("Error de conexion: " + error);
+        
+      });
+
+      this.usuarioCorrecto();
+      this.cambioAInicio();
     }
 
     pantallaRegistro = () => {
@@ -44,7 +72,7 @@ export default class Login extends Component{
                 <TextInput
                 style={{ borderWidth: 1 }}
                 placeholder = "Usuario"
-                onChangeText = {this.validar_usuario}
+                onChangeText = {this.}
                 keyboardType='email-address'
                 />
 
