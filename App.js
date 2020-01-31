@@ -29,6 +29,7 @@ import 'react-native-gesture-handler';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import Inicio from './screens/inicio';
+import Modificar from './screens/inicio';
 
 export const NavegadorDeLaApp = createStackNavigator(
   {
@@ -36,7 +37,7 @@ export const NavegadorDeLaApp = createStackNavigator(
     //Register:{screen:Register},
     Inicio:{screen:Inicio},
     //Afegir:{screen:Afegir},
-    //Modificar:{screen:Modificar},
+    Modificar:{screen:Modificar},
   },
   {initialRouteName:'Inicio'},
 );
