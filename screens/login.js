@@ -18,7 +18,7 @@ export default class Login extends Component{
             usuarioCorrecto: false
         };
          //Esto es necesario para poder usar las funciones.
-         this.comprueboUsuario = this.comprueboUsuario.bind(this);
+         //this.comprobarUsuario = this.comprobarUsuario.bind(this);
          this.usuarioCorrecto = this.usuarioCorrecto.bind(this);
          this.cambioAInicio =  this.cambioAInicio.bind(this);
     }
@@ -36,7 +36,7 @@ export default class Login extends Component{
     }
 
     
-    //Recupera SOLO los usuarios que coincidan con las variables pasadas por parámetros  
+    //Recupera usuarios que coincidan con las variables pasadas por parámetros  
     comprobarUsuario = async () => {
         fetch(`http://localhost:3000/usuaris?userName=${this.state.userName}&contrasenya=${this.state.contrasenya}`) 
       .then((respuesta) => {
@@ -59,6 +59,7 @@ export default class Login extends Component{
       this.cambioAInicio();
     }
 
+    // CAMBIA A LA PANTALLA DE REGISTRO
     pantallaRegistro = () => {
         this.props.navigation.navigate('Register');
     }
@@ -72,7 +73,7 @@ export default class Login extends Component{
                 <TextInput
                 style={{ borderWidth: 1 }}
                 placeholder = "Usuario"
-                onChangeText = {this.}
+                onChangeText = {this.comprobarUsuario}
                 keyboardType='email-address'
                 />
 
