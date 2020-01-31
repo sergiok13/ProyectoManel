@@ -102,8 +102,8 @@ export default class Login extends Component{
                 <TextInput
                 style={{ borderWidth: 1 }}
                 placeholder = "Contraseña"
-                secureTextEntry={true}
                 onChangeText = {this.guardarPassword}
+                secureTextEntry={true}
                 />
 
                 <Button
