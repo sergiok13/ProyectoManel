@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'react-native-gesture-handler';
 import {
   StyleSheet,
   View,
@@ -17,6 +18,7 @@ export default class Login extends Component{
             documentJSON: [],
             usuarioCorrecto: false //se guardan los usuarios de la bbdd recuperados
         };
+
         // necesario para poder usar las funciones.
         this.usuarioCorrecto = this.usuarioCorrecto.bind(this);
     }

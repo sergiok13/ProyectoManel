@@ -80,6 +80,7 @@ class Inicio extends React.Component {
         super(props);
         this.state = { documentJSON: undefined };
     }
+   
 
     render() {
         var obtenerElementos = () => {
