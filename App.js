@@ -30,6 +30,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import Inicio from './screens/inicio';
 import Login from './screens/login';
+import Register from './screens/register';
 
 export const NavegadorDeLaApp = createStackNavigator(
   {
@@ -39,7 +40,7 @@ export const NavegadorDeLaApp = createStackNavigator(
     //Afegir:{screen:Afegir},
     //Modificar:{screen:Modificar},
   },
-  {initialRouteName:'Login'},
+  {initialRouteName:'Register'},
 );
 
 export const AppContainer = createAppContainer(NavegadorDeLaApp);
