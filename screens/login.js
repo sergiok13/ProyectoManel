@@ -39,7 +39,7 @@ export default class Login extends Component{
     
     //Recupera usuarios que coincidan con las variables pasadas por parámetros  
     comprobarUsuario = async () => {
-        fetch('http://localhost:3000/usuaris?userName=${this.state.userName}&contrasenya=${this.state.contrasenya}') 
+        fetch(`http://localhost:3000/usuaris?userName=${this.state.userName}&contrasenya=${this.state.contrasenya}`) 
       .then((respuesta) => {
         if (respuesta.ok) {
           return respuesta.json();
@@ -49,7 +49,8 @@ export default class Login extends Component{
         }
       })
       .then(respostaJson => {
-        this.setState({ documentJSON: respostaJson })
+        this.setState({ documentJSON: respostaJson });
+        console.log(this.state.documentJSON);
       })
       .catch(error => {
         console.log("Error de conexion: " + error);
@@ -61,10 +62,11 @@ export default class Login extends Component{
 
     //Para comprobar que el array este lleno y cambiar la variable
     usuarioCorrecto(){
-      if(this.state.documentJSON == []){
-          this.setState({usuarioCorrecto: false});
+      if(this.state.documentJSON != []){
+          this.setState({usuarioCorrecto: true});
           alert("El array esta vacío");
-      }else{
+      }
+      else{
           this.setState({usuarioCorrecto:  true});
           alert("El array esta lleno");
       }  
@@ -74,7 +76,7 @@ export default class Login extends Component{
 
     // CAMBIA A LA PANTALLA DE INICIO
     pantallaInicio = () => {
-      if(this.usuarioCorrecto == true){
+      if(this.comprobarUsuario() == true){
       this.props.navigation.navigate('Inicio', {nombre:this.state.userName});
     }else{
       alert("Usuario o Contraseña incorrecto");
