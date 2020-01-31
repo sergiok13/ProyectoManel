@@ -75,7 +75,7 @@ export default class Login extends Component{
     // CAMBIA A LA PANTALLA DE INICIO
     pantallaInicio = () => {
       if(this.usuarioCorrecto == true){
-      this.props.navigation.navigate('Inicio');
+      this.props.navigation.navigate('Inicio', {nombre:this.state.userName});
     }else{
       alert("Usuario o Contraseña incorrecto");
   }

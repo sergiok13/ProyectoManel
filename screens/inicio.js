@@ -22,7 +22,7 @@ import {
 import 'react-native-gesture-handler';
 
 class Separador extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
     }
     render() {
@@ -44,18 +44,11 @@ class Item extends React.Component {
         super(props);
     }
 
-    
+
 
     render() {
 
-        var borrarElemento = id => {
-            fetch('localhost' + "/elements/" + id)
-            .then(response =>
-                response.json().then(json => {
-                  alert("Se ha borrado " + json);
-                })
-              );
-        }
+
 
         return (
             <View style={{ borderColor: "blue", borderWidth: 2, borderRadius: 20 }}>
@@ -64,7 +57,7 @@ class Item extends React.Component {
                         <Text>{this.props.nombre}</Text>
                     </View>
                     <View style={{ flex: 0.3 }}>
-                        <Button title="ELIMINAR" onPress={() => borrarElemento(this.props.id)}/>
+                        <Button title="ELIMINAR" onPress={() => this.props.borrar()} />
                     </View>
                 </View>
                 <View style={{ flex: 1, float: "right", flexDirection: "row", marginHorizontal: 20, marginBottom: 10 }}>
@@ -72,7 +65,7 @@ class Item extends React.Component {
                         <Text>{this.props.descripcion}</Text>
                     </View>
                     <View style={{ flex: 0.3 }}>
-                        <Button title="MODIFICAR" onPress={() => this.props.funcion()}/>
+                        <Button title="MODIFICAR" onPress={() => this.props.funcion()} />
                     </View>
                 </View>
             </View>
@@ -87,7 +80,7 @@ class Inicio extends React.Component {
         this.state = { documentJSON: undefined };
     }
 
-    obtenerElementos(){
+    obtenerElementos() {
         fetch("http://localhost:3000/elements")
             .then((resposta) => {
                 if (resposta.ok) {
@@ -104,16 +97,27 @@ class Inicio extends React.Component {
             });
     }
 
-    componentDidMount(){
+    componentWillMount() {
         this.obtenerElementos();
     }
 
-    aModificar(){
+    aModificar() {
         this.props.navigation.navigate('Modificar');
     }
 
+    borrarElemento = id => {
+        fetch(`http://localhost:3000/elements/` + id,
+            { method: "DELETE" })
+            .then(response =>
+                response.json().then(json => {
+                    alert("Se ha borrado " + json);
+                })
+            );
+        this.obtenerElementos();
+    }
+
     render() {
-        
+
 
         if (this.state.documentJSON != undefined) {
             return (
@@ -122,7 +126,7 @@ class Inicio extends React.Component {
                     </View>
 
                     <View style={{ flex: 5, marginLeft: 30 }}>
-                        <Text>Benvingut</Text>
+                        <Text>Benvingut {this.props.navigation.state.params.nombre}</Text>
                     </View>
                     <View style={{ flex: 75 }}>
                         <FlatList
@@ -160,7 +164,7 @@ class Inicio extends React.Component {
                                 }
                             ]}*/
                             data={this.state.documentJSON}
-                            renderItem={({ item }) => <Item nombre={item.nom} id={item.id} descripcion={item.descripcio} funcion={() =>this.aModificar()} />}
+                            renderItem={({ item }) => <Item borrar={() => this.borrarElemento(item.id)} nombre={item.nom} descripcion={item.descripcio} funcion={() => this.aModificar()} />}
                         />
                     </View>
 
@@ -168,8 +172,8 @@ class Inicio extends React.Component {
                     </View>
 
                     <View style={{ flex: 10, flexDirection: "row" }}>
-                        <View style={{flex:2/3}}></View>
-                        <View style={{flex:1/3}}>
+                        <View style={{ flex: 2 / 3 }}></View>
+                        <View style={{ flex: 1 / 3 }}>
                             <Button title="AÑADIR" />
                         </View>
                     </View>

@@ -42,7 +42,7 @@ export const NavegadorDeLaApp = createStackNavigator(
     //Afegir:{screen:Afegir},
     Modificar:{screen:Modificar},
   },
-  {initialRouteName:'Inicio'},
+  {initialRouteName:'Login'},
 );
 
 export const AppContainer = createAppContainer(NavegadorDeLaApp);

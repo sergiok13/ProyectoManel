@@ -28,18 +28,13 @@
   "elements": [
     {
       "id": 1,
-      "nom": "Coca-Cola",
-      "descripcio": "Beguda Refrescant"
+      "nom": "CocaCola",
+      "descripcio": "bebida"
     },
     {
       "id": 2,
       "nom": "Fritos",
       "descripcio": "Snack"
-    },
-    {
-      "id": 3,
-      "nom": "Arròs",
-      "descripcio": "Aliment bàsic"
     },
     {
       "id": 4,
