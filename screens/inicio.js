@@ -22,6 +22,9 @@ import {
 import 'react-native-gesture-handler';
 
 class Separador extends React.Component {
+    constructor(props){
+        super(props);
+    }
     render() {
         return (
             <View>
@@ -40,6 +43,9 @@ class Item extends React.Component {
     constructor(props) {
         super(props);
     }
+
+    
+
     render() {
 
         var borrarElemento = id => {
@@ -66,7 +72,7 @@ class Item extends React.Component {
                         <Text>{this.props.descripcion}</Text>
                     </View>
                     <View style={{ flex: 0.3 }}>
-                        <Button title="MODIFICAR"/>
+                        <Button title="MODIFICAR" onPress={() => this.props.funcion()}/>
                     </View>
                 </View>
             </View>
@@ -100,6 +106,10 @@ class Inicio extends React.Component {
 
     componentDidMount(){
         this.obtenerElementos();
+    }
+
+    aModificar(){
+        this.props.navigation.navigate('Modificar');
     }
 
     render() {
@@ -150,7 +160,7 @@ class Inicio extends React.Component {
                                 }
                             ]}*/
                             data={this.state.documentJSON}
-                            renderItem={({ item }) => <Item nombre={item.nom} id={item.id} descripcion={item.descripcio} />}
+                            renderItem={({ item }) => <Item nombre={item.nom} id={item.id} descripcion={item.descripcio} funcion={() =>this.aModificar()} />}
                         />
                     </View>
 
