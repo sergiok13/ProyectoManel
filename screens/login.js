@@ -15,20 +15,17 @@ export default class Login extends Component{
             userName: '',
             contrasenya: '',
             documentJSON: [], //se guardan los usuarios de la bbdd recuperados
-            usuarioCorrecto: false
         };
-         //Esto es necesario para poder usar las funciones.
-         //this.comprobarUsuario = this.comprobarUsuario.bind(this);
-         this.usuarioCorrecto = this.usuarioCorrecto.bind(this);
-         this.cambioAInicio =  this.cambioAInicio.bind(this);
+        
     }
 
+    //GUARDA CONTRASEÑA Y COMPRUEBA QUE SEA MAYOR QUE 1 Y SI NO ES MAYOR QUE 1 LO DEJA EN BLANCO
      guardarPassword = (text) => {
         (text.length > 1)
             ? this.setState({ contrasenya: text })
             : this.setState({ contrasenya: "" })
     }
-
+    //GUARDA USUARIO Y COMPRUEBA QUE SEA MAYOR QUE 1 Y SI NO ES MAYOR QUE 1 LO DEJA EN BLANCO
     guardarUsuario=(text)=>{
         (text.length > 1)
             ? this.setState({ userName: user })
@@ -38,7 +35,7 @@ export default class Login extends Component{
     
     //Recupera usuarios que coincidan con las variables pasadas por parámetros  
     comprobarUsuario = async () => {
-        fetch(`http://localhost:3000/usuaris?userName=${this.state.userName}&contrasenya=${this.state.contrasenya}`) 
+        fetch('http://localhost:3000/usuaris?userName=${this.state.userName}&contrasenya=${this.state.contrasenya}') 
       .then((respuesta) => {
         if (respuesta.ok) {
           return respuesta.json();
@@ -53,12 +50,14 @@ export default class Login extends Component{
       .catch(error => {
         console.log("Error de conexion: " + error);
         
-      });
+      })
 
-      this.usuarioCorrecto();
-      this.cambioAInicio();
     }
 
+    // CAMBIA A LA PANTALLA DE INICIO
+    pantallaInicio = () => {
+      this.props.navigation.navigate('Inicio');
+    }
     // CAMBIA A LA PANTALLA DE REGISTRO
     pantallaRegistro = () => {
         this.props.navigation.navigate('Register');
@@ -73,7 +72,7 @@ export default class Login extends Component{
                 <TextInput
                 style={{ borderWidth: 1 }}
                 placeholder = "Usuario"
-                onChangeText = {this.comprobarUsuario}
+                onChangeText = {this.guardarUsuario}
                 keyboardType='email-address'
                 />
 
@@ -87,6 +86,7 @@ export default class Login extends Component{
                 <Button
                     title="Iniciar sesión"
                     onPress={this.comprobarUsuario}
+                    onPress={this.pantallaInicio}
                     color="rgba(16,110,242,1)"
                 />
 
