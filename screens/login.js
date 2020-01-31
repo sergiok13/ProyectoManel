@@ -14,9 +14,11 @@ export default class Login extends Component{
         this.state={
             userName: '',
             contrasenya: '',
-            documentJSON: [], //se guardan los usuarios de la bbdd recuperados
+            documentJSON: [],
+            usuarioCorrecto: false //se guardan los usuarios de la bbdd recuperados
         };
-        
+        // necesario para poder usar las funciones.
+        this.usuarioCorrecto = this.usuarioCorrecto.bind(this);
     }
 
     //GUARDA CONTRASEÑA Y COMPRUEBA QUE SEA MAYOR QUE 1 Y SI NO ES MAYOR QUE 1 LO DEJA EN BLANCO
@@ -28,14 +30,14 @@ export default class Login extends Component{
     //GUARDA USUARIO Y COMPRUEBA QUE SEA MAYOR QUE 1 Y SI NO ES MAYOR QUE 1 LO DEJA EN BLANCO
     guardarUsuario=(text)=>{
         (text.length > 1)
-            ? this.setState({ userName: user })
+            ? this.setState({ userName: text })
             : this.setState( { userName: "" })
     }
 
     
     //Recupera usuarios que coincidan con las variables pasadas por parámetros  
     comprobarUsuario = async () => {
-        fetch('http://localhost:3000/usuaris?userName=${this.state.userName}&contrasenya=${this.state.contrasenya}') 
+        fetch(`http://localhost:3000/usuaris?userName=${this.state.userName}&contrasenya=${this.state.contrasenya}`) 
       .then((respuesta) => {
         if (respuesta.ok) {
           return respuesta.json();
@@ -50,14 +52,32 @@ export default class Login extends Component{
       .catch(error => {
         console.log("Error de conexion: " + error);
         
-      })
+      });
 
+      this.usuarioCorrecto();
     }
+
+    //Para comprobar que el array este lleno y cambiar la variable
+    usuarioCorrecto(){
+      if(this.state.documentJSON == []){
+          this.setState({usuarioCorrecto: false});
+          alert("El array esta vacío");
+      }else{
+          this.setState({usuarioCorrecto:  true});
+          alert("El array esta lleno");
+      }  
+  }
+
+
 
     // CAMBIA A LA PANTALLA DE INICIO
     pantallaInicio = () => {
+      if(this.usuarioCorrecto == true){
       this.props.navigation.navigate('Inicio');
-    }
+    }else{
+      alert("Usuario o Contraseña incorrecto");
+  }
+  }
     // CAMBIA A LA PANTALLA DE REGISTRO
     pantallaRegistro = () => {
         this.props.navigation.navigate('Register');
