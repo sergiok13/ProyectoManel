@@ -12,9 +12,13 @@ import 'react-native-gesture-handler';
 import { TextInput } from 'react-native-gesture-handler';
 
 class Item extends React.Component {
-  constructor(props) {
-      super(props);
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            nom: this.state.nombre,
+            descripcio: this.state.descrip,
+        }
+      }
   componentWillMount(){
     this.Fetch();
   }
@@ -42,25 +46,23 @@ class Modificar extends React.Component {
   }
 
   Fetch() {
-    fetch('localhost', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-       Nombre:document.getElementById(nom),
-        Descripcion:document.getElementById(descripcio),
-        }),
-      })
-      .then((response) => response.json())
-      .then((responseJson) => {
-         alert(responseJson)
-      })
-      .catch((error) => {
-       console.error(error)
-      })
+    fetch('http://localhost:3000/elements', {
+      method: 'POST',
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      },
+      body: JSON.stringify({
+        contrasenya: this.state.contra,
+        nom: this.state.nombre,
+      }),
   }
+  .then(response => {
+    console.log(response);
+    //response.json();
+  })
+  .then(json => console.log(json))
+  .catch(error => console.log(error))
+}
   Afegir(){
     this.setState({ Nombre: nom });
     this.setState({ Descripcion: descripcio });
