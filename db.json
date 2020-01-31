@@ -1,0 +1,49 @@
+{
+  "usuaris": [
+    {
+      "idUsu": 1,
+      "userName": "mviel",
+      "contrasenya": "hola",
+      "nom": "Manel"
+    },
+    {
+      "idUsu": 2,
+      "userName": "jofrna",
+      "contrasenya": "hola",
+      "nom": "Jonh"
+    }
+    
+  ],
+  "elements": [
+    {
+      "id":1,
+      "nom": "Coca-Cola",
+      "descripcio": "Beguda Refrescant"
+    },
+    {
+      "id":2,
+      "nom": "Fritos",
+      "descripcio": "Snack"
+    },
+    {
+      "id":3,
+      "nom": "Arròs",
+      "descripcio": "Aliment bàsic"
+    },
+    {
+      "id":4,
+      "nom": "Fruïta",
+      "descripcio": "Imprescindible a la dieta Mediterrània"
+    },
+    {
+      "id":5,
+      "nom": "Llet",
+      "descripcio": "Pot ser Sencera, Semidesnatada o Desnatada"
+    },
+    {
+      "id":6,
+      "nom": "Pa",
+      "descripcio": "Del Forn!!!"
+    }
+  ]
+}
