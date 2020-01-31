@@ -34,7 +34,7 @@ import Login from './screens/login';
 export const NavegadorDeLaApp = createStackNavigator(
   {
     Login:{screen:Login},
-    //Register:{screen:Register},
+    Register:{screen:Register},
     Inicio:{screen:Inicio},
     //Afegir:{screen:Afegir},
     //Modificar:{screen:Modificar},
