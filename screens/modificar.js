@@ -15,6 +15,9 @@ class Item extends React.Component {
   constructor(props) {
       super(props);
   }
+  componentWillMount(){
+    this.Fetch();
+  }
   render() {
       return (
           <View>
@@ -25,9 +28,7 @@ class Item extends React.Component {
   }
 
 }
-UNSAFE_componentWillMount(
-  this.Fetch()
-)
+
 class Modificar extends React.Component {
 
   constructor(props) {
@@ -74,5 +75,4 @@ class Modificar extends React.Component {
       );
   }
 };
-
   export default Modificar;
