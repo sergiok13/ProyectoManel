@@ -39,7 +39,7 @@ export default class Login extends Component{
     
     //Recupera usuarios que coincidan con las variables pasadas por parámetros  
     comprobarUsuario = async () => {
-        fetch(`http://localhost:3000/usuaris?userName=${this.state.userName}&contrasenya=${this.state.contrasenya}`) 
+        fetch('http://localhost:3000/usuaris?userName=${this.state.userName}&contrasenya=${this.state.contrasenya}') 
       .then((respuesta) => {
         if (respuesta.ok) {
           return respuesta.json();
@@ -103,6 +103,7 @@ export default class Login extends Component{
                 style={{ borderWidth: 1 }}
                 placeholder = "Contraseña"
                 onChangeText = {this.guardarPassword}
+                secureTextEntry={true}
                 />
 
                 <Button
