@@ -14,6 +14,9 @@ class Item extends React.Component {
   constructor(props) {
       super(props);
   }
+  componentWillMount(){
+    this.Fetch();
+  }
   render() {
       return (
           <View>
@@ -24,9 +27,7 @@ class Item extends React.Component {
   }
 
 }
-UNSAFE_componentWillMount(
-  this.Fetch()
-)
+
 class Modificar extends React.Component {
   render() {
       return (
@@ -38,7 +39,7 @@ class Modificar extends React.Component {
   }
 };
 
-class modusu extends Component {
+class modusu extends React.Component {
 
     constructor(props) {
         super(props);
@@ -58,8 +59,8 @@ class modusu extends Component {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-           Nombre = document.getElementById(nom),
-            Descripcion = document.getElementById(descripcio),
+           Nombre: document.getElementById(nom),
+            Descripcion: document.getElementById(descripcio),
             }),
           })
           .then((response) => response.json())

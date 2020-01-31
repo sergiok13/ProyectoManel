@@ -20,8 +20,10 @@ export default class Login extends Component{
         };
          //Esto es necesario para poder usar las funciones.
          //this.comprobarUsuario = this.comprobarUsuario.bind(this);
-         this.usuarioCorrecto = this.usuarioCorrecto.bind(this);
-         this.cambioAInicio =  this.cambioAInicio.bind(this);
+         
+         //Comentado por sergio-q
+         //this.usuarioCorrecto = this.usuarioCorrecto.bind(this);
+         //this.cambioAInicio =  this.cambioAInicio.bind(this);
     }
 
      guardarPassword = (text) => {
