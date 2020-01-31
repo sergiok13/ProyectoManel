@@ -42,7 +42,6 @@ export default class Register extends React.Component {
         "Content-type": "application/json; charset=UTF-8"
       },
       body: JSON.stringify({
-        idUsu: this.state.id,
         userName: this.state.username,
         contrasenya: this.state.contra,
         nom: this.state.nombre,

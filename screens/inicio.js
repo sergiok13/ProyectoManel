@@ -66,7 +66,7 @@ class Item extends React.Component {
                         <Text>{this.props.descripcion}</Text>
                     </View>
                     <View style={{ flex: 0.3 }}>
-                        <Button title="MODIFICAR" />
+                        <Button title="MODIFICAR"/>
                     </View>
                 </View>
             </View>
@@ -80,27 +80,32 @@ class Inicio extends React.Component {
         super(props);
         this.state = { documentJSON: undefined };
     }
-   
+
+    obtenerElementos(){
+        fetch("http://localhost:3000/elements")
+            .then((resposta) => {
+                if (resposta.ok) {
+                    return resposta.json();
+                } else {
+                    console.log("Error al conectar")
+                }
+            })
+            .then(respostaJson => {
+                this.setState({ documentJSON: respostaJson });
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+    componentDidMount(){
+        this.obtenerElementos();
+    }
 
     render() {
-        var obtenerElementos = () => {
-            fetch('localhost')
-                .then((resposta) => {
-                    if (resposta.ok) {
-                        return resposta.json();
-                    } else {
-                        console.log("Error al conectar")
-                    }
-                })
-                .then(respostaJson => {
-                    this.setState({ documentJSON: respostaJson })
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        }
+        
 
-        if (this.state.documentJSON == undefined) {
+        if (this.state.documentJSON != undefined) {
             return (
                 <View style={{ flex: 100 }}>
                     <View style={{ flex: 5 }}>
@@ -112,7 +117,7 @@ class Inicio extends React.Component {
                     <View style={{ flex: 75 }}>
                         <FlatList
                             ItemSeparatorComponent={() => <Separador />}
-                            data={[
+                            /*data={[
                                 {
                                     "id": 1,
                                     "nom": "Coca-Cola",
@@ -143,7 +148,8 @@ class Inicio extends React.Component {
                                     "nom": "Pa",
                                     "descripcio": "Del Forn!!!"
                                 }
-                            ]}
+                            ]}*/
+                            data={this.state.documentJSON}
                             renderItem={({ item }) => <Item nombre={item.nom} id={item.id} descripcion={item.descripcio} />}
                         />
                     </View>

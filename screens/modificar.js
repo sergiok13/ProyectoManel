@@ -49,8 +49,8 @@ class Modificar extends React.Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-       Nombre = document.getElementById(nom),
-        Descripcion = document.getElementById(descripcio),
+       Nombre:document.getElementById(nom),
+        Descripcion:document.getElementById(descripcio),
         }),
       })
       .then((response) => response.json())
