@@ -6,21 +6,23 @@ import {
   View,
   Text,
   StatusBar,
+  Button,
+  TextInput
 } from 'react-native';
 
 import 'react-native-gesture-handler';
-import { TextInput } from 'react-native-gesture-handler';
+//import { TextInput } from 'react-native-gesture-handler';
 
 class Item extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nom: this.state.nombre,
-      descripcio: this.state.descrip,
+      //nom: this.props.nom,
+      //descripcio: this.state.descrip,
     }
   }
   componentWillMount() {
-    this.Fetch();
+    //this.props.funcAfegir();
   }
   render() {
     return (
@@ -33,15 +35,15 @@ class Item extends React.Component {
 
 }
 
-class Modificar extends React.Component {
+class Afegir extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state.Fetch();
-    this.state.Afegir();
+    //this.state.Fetch();
+    //this.state.Afegir();
     this.state = {
-      Nom: "",
-      Descripcion: "",
+      //Nom: "",
+      //Descripcion: "",
     };
   }
 
@@ -55,25 +57,26 @@ class Modificar extends React.Component {
         contrasenya: this.state.contra,
         nom: this.state.nombre,
       }),
-    }
+    })
       .then(response => {
         console.log(response);
         //response.json();
       })
       .then(json => console.log(json))
       .catch(error => console.log(error))
-}
+  }
+
   Afegir() {
-    this.setState({ Nombre: nom });
-    this.setState({ Descripcion: descripcio });
+    //this.setState({ Nombre: nom });
+    //this.setState({ Descripcion: descripcio });
   }
 
   render() {
     return (
       <View>
-        <Item nom="usuario1"></Item>
-        <button onClick={() => this.Afegir()}>Afegir</button>;
-          </View>
+        <Item nom="usuario1" ></Item>
+        <Button title="Afegir" onPress={() => this.Afegir()}/>
+      </View>
     );
   }
 };

@@ -33,14 +33,14 @@ import Inicio from './screens/inicio';
 import Login from './screens/login';
 import Register from './screens/register';
 import Modificar from './screens/modificar';
-//import Afegir from './screens/afegir';
+import Afegir from './screens/afegir';
 
 export const NavegadorDeLaApp = createStackNavigator(
   {
     Login:{screen:Login},
     Register:{screen:Register},
     Inicio:{screen:Inicio},
-    //Afegir:{screen:Afegir},
+    Afegir:{screen:Afegir},
     Modificar:{screen:Modificar},
   },
   {initialRouteName:'Login'},
