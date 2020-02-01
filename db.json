@@ -33,14 +33,9 @@
   ],
   "elements": [
     {
-      "id": 1,
-      "nom": "CocaCola",
-      "descripcio": "bebida"
-    },
-    {
-      "id": 2,
       "nom": "Fritos",
-      "descripcio": "Snack"
+      "descripcio": "Snack bueno",
+      "id": 2
     },
     {
       "id": 4,

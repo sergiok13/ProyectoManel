@@ -101,8 +101,8 @@ class Inicio extends React.Component {
         this.obtenerElementos();
     }
 
-    aModificar() {
-        this.props.navigation.navigate('Modificar');
+    aModificar(id) {
+        this.props.navigation.navigate('Modificar', {id:id});
     }
 
     borrarElemento = id => {
@@ -164,7 +164,7 @@ class Inicio extends React.Component {
                                 }
                             ]}*/
                             data={this.state.documentJSON}
-                            renderItem={({ item }) => <Item borrar={() => this.borrarElemento(item.id)} nombre={item.nom} descripcion={item.descripcio} funcion={() => this.aModificar()} />}
+                            renderItem={({ item }) => <Item borrar={() => this.borrarElemento(item.id)} nombre={item.nom} descripcion={item.descripcio} funcion={() => this.aModificar(item.id)} />}
                         />
                     </View>
 
