@@ -42,8 +42,8 @@ class Afegir extends React.Component {
     //this.state.Fetch();
     //this.state.Afegir();
     this.state = {
-      //Nom: "",
-      //Descripcion: "",
+      nom: "",
+      descripcion: "",
     };
   }
 
@@ -54,8 +54,8 @@ class Afegir extends React.Component {
         "Content-type": "application/json; charset=UTF-8"
       },
       body: JSON.stringify({
-        contrasenya: this.state.contra,
-        nom: this.state.nombre,
+        nom: this.state.nom,
+        descripcio: this.state.descripcion,
       }),
     })
       .then(response => {
@@ -74,8 +74,10 @@ class Afegir extends React.Component {
   render() {
     return (
       <View>
-        <Item nom="usuario1" ></Item>
-        <Button title="Afegir" onPress={() => this.Afegir()}/>
+        {/*<Item nom="usuario1" ></Item>*/}
+        <TextInput placeholder="Nombre" onChangeText={value => this.setState({nom:value})}></TextInput>
+        <TextInput placeholder="Descripcion" onChangeText={value => this.setState({descripcion:value})}></TextInput>
+        <Button title="Afegir" onPress={() => this.Fetch()}/>
       </View>
     );
   }

@@ -56,6 +56,19 @@
       "id": 6,
       "nom": "Pa",
       "descripcio": "Del Forn!!!"
+    },
+    {
+      "nom": "cola",
+      "id": 7
+    },
+    {
+      "nom": "cola",
+      "id": 8
+    },
+    {
+      "nom": "itemdesergio",
+      "descripcio": "itemdesergio",
+      "id": 9
     }
   ]
 }
