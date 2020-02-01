@@ -174,7 +174,7 @@ class Inicio extends React.Component {
                     <View style={{ flex: 10, flexDirection: "row" }}>
                         <View style={{ flex: 2 / 3 }}></View>
                         <View style={{ flex: 1 / 3 }}>
-                            <Button title="AÑADIR" />
+                            <Button title="AÑADIR" onPress={() => this.props.navigation.navigate("Afegir")}/>
                         </View>
                     </View>
                 </View>
